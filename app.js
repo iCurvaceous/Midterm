@@ -29,9 +29,10 @@ var logger = require('morgan');
 var zipdb = require("zippity-do-dah");
 var ForecastIo = require("forecast.io");
 var app = express();
+var port = process.env.PORT || 3000;
 
 /*
-    Step 2 
+    Step 2
     You will need an API Key to use forecast.io
     Sign up for an account and get your API Key here:
     https://darksky.net/dev
@@ -48,13 +49,14 @@ var weather = new ForecastIo(options);//creates an instance of forecast.io
   Create a static route to the public folder.
   This will create a route to several essential JavaScript files and CSS files required for the app.
  */
-Your code here<----
+app.use(express.static(__dirname+'/public'));
+app.use('/', router);
 /*
   Step 4 
   Create a route to the views folder. 
   This folder has all the ejs files for the app.
 */
-Your code here<----
+app.use(express.static(__dirname+'/views'));
 /*
   Step 5 
   Set Morgan in dev mode so it logs all the requests to our server.
@@ -110,7 +112,9 @@ app.use(function(req, res) {
     Step 8
     Setup the app to listen on port 3000 
 */
-Your code here<----
+app.listen(port, function(){
+    console.log("Server is running on Port " + port);
+});
 
 /*
     Step 9 

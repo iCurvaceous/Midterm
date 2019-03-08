@@ -61,19 +61,20 @@ app.use(express.static(__dirname+'/views'));
   Step 5 
   Set Morgan in dev mode so it logs all the requests to our server.
 */
-Your code here<----
+  app.use(morgan('dev'));
 /*
   Step 6 
   Set your view engine to ejs.
 */
-Your code here<----
+app.set('view engine', 'ejs');
 
 /*
   Step 7 
   Use a get to render the index page
 */
-
-Your code here<----
+app.get('/', function(req, res) {
+  res.render('index');
+});
 
 //===The get below takes the 5 digets from the zip code and converts it to latitude and longitude coordinates 
 //===It does this through an ajax request in a script in public/main.js

@@ -30,6 +30,7 @@ var zipdb = require("zippity-do-dah");
 var ForecastIo = require("forecast.io");
 var app = express();
 var port = process.env.PORT || 3000;
+var router = express.Router();
 
 /*
     Step 2
@@ -61,7 +62,7 @@ app.use(express.static(__dirname+'/views'));
   Step 5 
   Set Morgan in dev mode so it logs all the requests to our server.
 */
-  app.use(morgan('dev'));
+app.use(logger('dev'));
 /*
   Step 6 
   Set your view engine to ejs.
@@ -124,4 +125,4 @@ app.listen(port, function(){
 */
 
 //==If all is connected properly you should be now able to run the midterm app from your command line 
-//==Save your files push them to your Repository and send the link in the Midterm Assignment 
+//==Save your files push them to your Repository and send the link in the Midterm Assignment
